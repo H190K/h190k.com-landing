@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="max-age=7200, must-revalidate" />
+  <meta http-equiv="Pragma"        content="no-cache" />
+  <meta http-equiv="Expires"       content="0" />
+  <meta name="description" content="H190K - Web Developer Portfolio of Hasan Albehadili showcasing projects, skills, and contact information.">
+  <title>H190K | Web Developer Portfolio</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="img/icon.png" type="image/png">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Lazy Load Library -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <header id="navbar" role="banner">
+    <div class="container nav-container">
+      <a href="#" class="logo" aria-label="Go to top"
+         onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+        H190K
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#donation">Donate</a></li>
+      </ul>
+      <div class="burger" role="button" tabindex="0" aria-label="Toggle Navigation">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm H190K</h1>
+        <p>Enthusiastic Web Developer dedicated to building visually striking and highly functional websites.</p>
+        <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">View My Work</button>
+        <!-- scroll-down arrow -->
+        <div class="scroll-down">
+          <i class="fas fa-chevron-down arrow-down"
+             onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });"
+             aria-label="Scroll down"></i>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="about-content">
+          <h2>About Me</h2>
+          <p>My name is Hasan Albehadili, a software engineering student who loves to design websites. H190K is my slogan and brand, representing my commitment to creating seamless and engaging web experiences that make an impact.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="projects-grid" id="projects-grid"></div>
+        <div id="view-all-wrapper"></div>
+      </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-icon"><i class="fas fa-code"></i></div><h3>Frontend Development</h3><p>HTML, CSS, JavaScript</p></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fas fa-database"></i></div><h3>Backend Development</h3><p>MongoDB, MySQL, Supabase</p></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fas fa-paint-brush"></i></div><h3>Design</h3><p>Adobe, Figma</p></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fas fa-cloud"></i></div><h3>Cloud Services</h3><p>Heroku, Render, Netlify</p></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-form">
+          <form id="contact-form">
+            <input type="hidden" name="to_name" value="H190K">
+            <input type="text" id="from_name" name="from_name" placeholder="Name/Surname" required>
+            <input type="email" id="from_email" name="from_email" placeholder="Your-Email" required>
+            <textarea id="message" name="message" rows="5" placeholder="Your-Message" required></textarea>
+            <button type="submit">Send Message</button>
+            <p id="form-message" style="display: none;"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Donation Section -->
+    <section id="donation">
+      <div class="container">
+        <h2>Donate</h2>
+        <a href="https://nowpayments.io/donation?api_key=J0QACAH-BTH4F4F-QDXM4ZS-RCA58BH" target="_blank" rel="noreferrer noopener">
+          <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments" loading="lazy">
+        </a>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 H190K. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://instagram.com/frh190k" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/h190k" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <a href="mailto:info@h190k.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  
+  <!-- JavaScript -->
+  <script src="js/utils.js" type="module"></script>
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>

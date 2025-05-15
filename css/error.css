@@ -1,0 +1,62 @@
+/* Apply Inter font globally */
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Smooth transitions and animations */
+a, button {
+    transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+/* Page entrance animation */
+main {
+    animation: fadeIn 0.6s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* Gradient animation for the H1 heading */
+@keyframes gradient-h1 {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Add entrance animation for heading */
+h1 {
+    animation: scaleIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.animate-gradient-h1 {
+  background-size: 300% 300%;
+  background-image: linear-gradient(to right, #6366f1, #a855f7, #ec4899, #f97316, #ec4899, #a855f7, #6366f1); /* Indigo, Purple, Pink, Orange, Pink, Purple, Indigo */
+  animation: gradient-h1 6s ease infinite;
+}
+
+/* More dynamic gradient animation for the button */
+@keyframes gradient-button {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Button hover effect enhancement */
+.animate-gradient-button:hover {
+    box-shadow: 0 0 25px 8px rgba(249, 115, 22, 0.5); /* Orange glow on hover */
+    transform: translateY(-3px);
+}
+.animate-gradient-button {
+    background-size: 200% 200%; /* Adjust size for desired effect */
+    animation: gradient-button 3.5s ease-in-out infinite; /* Smoother animation */
+    /* Apply a subtle glow effect using box-shadow */
+    box-shadow: 0 0 15px 5px rgba(168, 85, 247, 0.4); /* Purple glow, adjust color/spread as needed */
+}
+/* Enhance glow on hover */
+.animate-gradient-button:hover {
+    box-shadow: 0 0 25px 8px rgba(249, 115, 22, 0.5); /* Orange glow on hover */
+}
