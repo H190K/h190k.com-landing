@@ -246,4 +246,21 @@ footer{
   .toggle .line1{transform:rotate(-45deg) translate(-5px,6px)}
   .toggle .line2{opacity:0}
   .toggle .line3{transform:rotate(45deg) translate(-5px,-6px)}
+  
+  .mobile-close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--text-color);
+    background: none;
+    border: none;
+    z-index: 1000;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .nav-links.active + .mobile-close-btn {
+    display: block;
+  }
 }

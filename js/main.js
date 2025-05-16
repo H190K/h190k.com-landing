@@ -54,6 +54,19 @@ window.onload = function () {
   const navLinks = document.querySelector('.nav-links');
   const items = document.querySelectorAll('.nav-links li');
   
+  // Create close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'mobile-close-btn';
+  closeBtn.innerHTML = '&times;';
+  closeBtn.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    burger.classList.remove('toggle');
+    items.forEach(l => l.style.animation = '');
+    closeBtn.style.display = 'none';
+  });
+  document.body.appendChild(closeBtn);
+
   if (burger) {
     burger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
@@ -62,6 +75,7 @@ window.onload = function () {
         link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${i/7+0.3}s`;
       });
       burger.classList.toggle('toggle');
+      closeBtn.style.display = navLinks.classList.contains('active') ? 'block' : 'none';
     });
     burger.addEventListener('keydown', e => { 
       if (e.key==='Enter'||e.key===' ') { 
@@ -84,6 +98,7 @@ window.onload = function () {
             burger.classList.remove('toggle');
             document.body.classList.remove('menu-open');
             items.forEach(l=>l.style.animation='');
+            closeBtn.style.display = 'none';
           }
         }
       });
