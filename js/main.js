@@ -19,9 +19,9 @@ export function initProjects() {
           <div class="project-content">
             <h3>${p.title}</h3>
             <p>${p.desc}</p>
-            <a href="${p.link}" target="_blank" class="btn-secondary">
+            <button class="btn-secondary" onclick="window.open('${p.link}','_blank')">
               ${p.button || 'View Project'}
-            </a>
+            </button>
           </div>
         </div>
       `);
@@ -56,7 +56,7 @@ window.onload = function () {
   
   if (burger) {
     burger.addEventListener('click', () => {
-      navLinks.classList.toggle('nav-active');
+      navLinks.classList.toggle('active');
       items.forEach((link, i) => {
         link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${i/7+0.3}s`;
       });
@@ -78,8 +78,8 @@ window.onload = function () {
         const targetElement = document.getElementById(a.getAttribute('href').slice(1));
         if (targetElement) {
           targetElement.scrollIntoView({behavior:'smooth'});
-          if(navLinks.classList.contains('nav-active')){
-            navLinks.classList.remove('nav-active');
+          if(navLinks.classList.contains('active')){
+            navLinks.classList.remove('active');
             burger.classList.remove('toggle');
             items.forEach(l=>l.style.animation='');
           }
