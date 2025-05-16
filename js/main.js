@@ -85,6 +85,20 @@ window.onload = function () {
     });
   }
 
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && 
+        !e.target.closest('.nav-links') && 
+        !e.target.closest('.burger') && 
+        !e.target.closest('.mobile-close-btn')) {
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      burger.classList.remove('toggle');
+      closeBtn.style.display = 'none';
+      items.forEach(l => l.style.animation = '');
+    }
+  });
+
   // Smooth scroll nav
   document.querySelectorAll('.nav-links a').forEach(a => {
     if (a.getAttribute('href') && a.getAttribute('href').startsWith('#')) {
