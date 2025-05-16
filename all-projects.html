@@ -14,18 +14,30 @@
   <!-- CSS Styles -->
   <link rel="stylesheet" href="css/popup.css" />
   <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/main.css" />
 
 </head>
 <body>
   <!-- HEADER -->
-  <header>
-    <nav class="nav-container">
-      <div class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">H190K</div>
+  <header id="navbar" role="banner">
+    <div class="container nav-container">
+      <a href="/" class="logo" aria-label="Go to top"
+         onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+        H190K
+      </a>
+
       <ul class="nav-links">
         <li><a href="https://h190k.com">Home</a></li>
         <li><a href="https://h190k.com/#contact">Contact</a></li>
+        <li><a href="https://h190k.com/#donation">Donate</a></li>
       </ul>
-    </nav>
+
+      <div class="burger" role="button" tabindex="0" aria-label="Toggle Navigation">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </div>
   </header>
 
   <!-- MAIN -->
@@ -53,6 +65,7 @@
 
   <!-- PROJECTS SCRIPT -->
   <!-- JavaScript -->
+  <script src="js/main.js" type="module"></script>
   <script src="js/popup-utils.js" type="module"></script>
   <script src="js/utils.js" type="module"></script>
   <script src="js/all-projects.js" type="module"></script>

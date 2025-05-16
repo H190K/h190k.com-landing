@@ -21,7 +21,7 @@ body {
 }
 a { text-decoration: none; color: inherit; }
 
-/* Header/Nav */
+/* Header/Nav (removed redundant styles - using main.css instead) */
 header {
   position: fixed;
   top: 0;
@@ -47,30 +47,6 @@ header {
   transition: color var(--transition-speed);
 }
 .logo:hover { color: var(--hover-accent); }
-
-.nav-links { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
-.nav-links li { margin-left: 30px; }
-.nav-links a {
-  position: relative;
-  font-size: 1rem;
-  transition: color var(--transition-speed);
-}
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0;
-  height: 2px;
-  background: var(--accent-color);
-  transition: width var(--transition-speed);
-}
-.nav-links a:hover {
-  color: var(--accent-color);
-}
-.nav-links a:hover::after {
-  width: 100%;
-}
 
 /* Main Projects Section */
 main { padding-top: 100px; }

@@ -60,31 +60,15 @@ window.onload = function () {
   const burger = document.querySelector('.burger');
   const items = document.querySelectorAll('.nav-links li');
   
-  // Create close button
-  const closeBtn = document.querySelector('.mobile-close-btn');
-  if (!closeBtn) {
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'mobile-close-btn';
-    closeBtn.innerHTML = '&times;';
-    closeBtn.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      burger.classList.remove('toggle');
-      items.forEach(l => l.style.animation = '');
-      closeBtn.style.display = 'none';
-    });
-    document.body.appendChild(closeBtn);
-  }
-
   if (burger) {
     burger.addEventListener('click', () => {
+      const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
       document.body.classList.toggle('menu-open');
       items.forEach((link, i) => {
         link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${i/7+0.3}s`;
       });
       burger.classList.toggle('toggle');
-      closeBtn.style.display = navLinks.classList.contains('active') ? 'block' : 'none';
     });
     burger.addEventListener('keydown', e => { 
       if (e.key==='Enter'||e.key===' ') { 
@@ -96,6 +80,7 @@ window.onload = function () {
 
   // Close menu when clicking outside or on empty menu space
   document.addEventListener('click', (e) => {
+    const navLinks = document.querySelector('.nav-links');
     if (navLinks.classList.contains('active')) {
       const clickedNavLink = e.target.closest('.nav-links a');
       const clickedMenuContent = e.target.closest('.nav-links li');
@@ -105,12 +90,10 @@ window.onload = function () {
       // 2. Outside menu completely
       if ((e.target === navLinks || 
           (!clickedNavLink && !clickedMenuContent)) &&
-          !e.target.closest('.burger') && 
-          !e.target.closest('.mobile-close-btn')) {
+          !e.target.closest('.burger')) {
         navLinks.classList.remove('active');
         document.body.classList.remove('menu-open');
         burger.classList.remove('toggle');
-        closeBtn.style.display = 'none';
         items.forEach(l => l.style.animation = '');
       }
     }
@@ -119,19 +102,11 @@ window.onload = function () {
   // Smooth scroll nav
   document.querySelectorAll('.nav-links a').forEach(a => {
     if (a.getAttribute('href') && a.getAttribute('href').startsWith('#')) {
-      a.addEventListener('click', e => {
+      a.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetElement = document.getElementById(a.getAttribute('href').slice(1));
-        if (targetElement) {
-          targetElement.scrollIntoView({behavior:'smooth'});
-          if(navLinks.classList.contains('active')){
-            navLinks.classList.remove('active');
-            burger.classList.remove('toggle');
-            document.body.classList.remove('menu-open');
-            items.forEach(l=>l.style.animation='');
-            closeBtn.style.display = 'none';
-          }
-        }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
       });
     }
   });
