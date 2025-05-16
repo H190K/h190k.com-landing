@@ -85,17 +85,25 @@ window.onload = function () {
     });
   }
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside or on empty menu space
   document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('active') && 
-        !e.target.closest('.nav-links') && 
-        !e.target.closest('.burger') && 
-        !e.target.closest('.mobile-close-btn')) {
-      navLinks.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      burger.classList.remove('toggle');
-      closeBtn.style.display = 'none';
-      items.forEach(l => l.style.animation = '');
+    if (navLinks.classList.contains('active')) {
+      const clickedNavLink = e.target.closest('.nav-links a');
+      const clickedMenuContent = e.target.closest('.nav-links li');
+      
+      // Close if clicking:
+      // 1. Directly on nav-links element (empty space between items)
+      // 2. Outside menu completely
+      if ((e.target === navLinks || 
+          (!clickedNavLink && !clickedMenuContent)) &&
+          !e.target.closest('.burger') && 
+          !e.target.closest('.mobile-close-btn')) {
+        navLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        burger.classList.remove('toggle');
+        closeBtn.style.display = 'none';
+        items.forEach(l => l.style.animation = '');
+      }
     }
   });
 
