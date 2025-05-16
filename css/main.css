@@ -6,6 +6,7 @@
   --text-color:#fff; --text-muted:#ccc; --border-color:#333;
   --transition-speed:.25s; --animation-duration:.8s; --animation-easing:cubic-bezier(0.25, 0.1, 0.25, 1.0);
   --card-bg: #1a1a1a;
+  --button-radius: 25px;
 }
 
 /* ───────────────  Base / Global  ─────────────── */
@@ -120,6 +121,21 @@ main section:nth-of-type(even){background:var(--secondary-bg)}
   font-size: 1rem;
   width: auto;
   max-width: none;
+  margin: 0 auto;
+  background: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background var(--transition-speed);
+}
+
+#view-all-wrapper .btn-secondary:hover {
+  background: var(--hover-accent);
+  text-decoration: none;
 }
 .project-card{
   background:var(--primary-bg);border:2px solid var(--border-color);border-radius:10px;
@@ -132,23 +148,51 @@ main section:nth-of-type(even){background:var(--secondary-bg)}
   display:block;transition:filter var(--transition-speed)
 }
 .project-card:hover img{filter:grayscale(0%)}
-.project-card h3,
-.project-card p{margin:0 20px;text-align:center}
-.project-card h3{
-  font-size:1.5rem;margin-top:15px;opacity:0;
-  animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards 1s
+.project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  justify-content: space-between;
 }
-.project-card p{
-  font-size:.9rem;margin-bottom:15px;color:var(--text-muted);
-  opacity:0;animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards 1.3s
+.project-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
-.btn-secondary{
-  display:block;width:80%;max-width:200px;margin: 15px auto 0;
-  padding:10px 0;background:var(--accent-color);color:var(--text-color);
-  border:none;border-radius:25px;cursor:pointer;font-size:.9rem;text-align:center;
-  transition:background var(--transition-speed),transform var(--transition-speed)
+.project-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  flex: 1; /* Ensures the text area grows and pushes button down */
 }
-.btn-secondary:hover{background:var(--hover-accent)}
+.project-card .btn-secondary {
+  display: block;
+  width: 80%;
+  max-width: 200px;
+  margin: 15px auto 0;
+  padding: 10px 0;
+  background: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+}
+.project-card .btn-secondary:hover {
+  background: var(--hover-accent);
+}
+
+/* Optional: Ensure image doesn't affect layout */
+.project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* ───────────────  Skills  ─────────────── */
 #skills h2{font-size:2.5rem;text-align:center;margin-bottom:50px;
