@@ -143,11 +143,10 @@ main section:nth-of-type(even){background:var(--secondary-bg)}
   opacity:0;animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards 1.3s
 }
 .btn-secondary{
-  display:block;width:80%;max-width:200px;margin-top:auto;margin-bottom:15px;
+  display:block;width:80%;max-width:200px;margin: 15px auto 0;
   padding:10px 0;background:var(--accent-color);color:var(--text-color);
   border:none;border-radius:25px;cursor:pointer;font-size:.9rem;text-align:center;
-  transition:background var(--transition-speed);opacity:0;
-  animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards 1.6s
+  transition:background var(--transition-speed),transform var(--transition-speed)
 }
 .btn-secondary:hover{background:var(--hover-accent)}
 
