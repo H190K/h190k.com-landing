@@ -49,23 +49,33 @@ window.onload = function () {
   // Initialize store popup
   initStorePopup();
 
+  // Initialize menu state
+  const navLinks = document.querySelector('.nav-links');
+  const closeBtn = document.querySelector('.mobile-close-btn');
+  if (navLinks) {
+    navLinks.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    if (closeBtn) closeBtn.style.display = 'none';
+  }
+
   // Burger toggle
   const burger = document.querySelector('.burger');
-  const navLinks = document.querySelector('.nav-links');
   const items = document.querySelectorAll('.nav-links li');
   
   // Create close button
-  const closeBtn = document.createElement('button');
-  closeBtn.className = 'mobile-close-btn';
-  closeBtn.innerHTML = '&times;';
-  closeBtn.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    document.body.classList.remove('menu-open');
-    burger.classList.remove('toggle');
-    items.forEach(l => l.style.animation = '');
-    closeBtn.style.display = 'none';
-  });
-  document.body.appendChild(closeBtn);
+  if (!closeBtn) {
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'mobile-close-btn';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      burger.classList.remove('toggle');
+      items.forEach(l => l.style.animation = '');
+      closeBtn.style.display = 'none';
+    });
+    document.body.appendChild(closeBtn);
+  }
 
   if (burger) {
     burger.addEventListener('click', () => {
