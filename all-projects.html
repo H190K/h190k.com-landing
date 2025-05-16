@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   
   <!-- CSS Styles -->
+  <link rel="stylesheet" href="css/popup.css" />
   <link rel="stylesheet" href="css/projects.css" />
 
 </head>
@@ -47,8 +48,19 @@
     </div>
   </footer>
 
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-content">
+      <button class="close-popup">&times;</button>
+      <div class="popup-body">
+        <!-- Popup content will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
   <!-- PROJECTS SCRIPT -->
   <!-- JavaScript -->
+  <script src="js/popup-utils.js" type="module"></script>
   <script src="js/utils.js" type="module"></script>
   <script src="js/all-projects.js" type="module"></script>
 </body>
