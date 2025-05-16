@@ -38,13 +38,14 @@
 }
 
 .popup-content {
-  background: var(--bg-color);
+  background: var(--dark-bg-color, #1a1a1a);
   padding: 1.5rem;
   border-radius: 8px;
   max-width: 300px;
   width: auto;
   position: relative;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: var(--text-color, #ffffff);
 }
 
 .popup-content p {
