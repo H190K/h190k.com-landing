@@ -56,45 +56,39 @@ window.onload = function () {
     document.body.classList.remove('menu-open');
   });
 
-  // Burger toggle
+  // Burger menu toggle
   const burger = document.querySelector('.burger');
-  const items = document.querySelectorAll('.nav-links li');
-  
   if (burger) {
     burger.addEventListener('click', () => {
       const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active');
+      navLinks.classList.toggle('nav-active');
       document.body.classList.toggle('menu-open');
-      items.forEach((link, i) => {
+      burger.classList.toggle('toggle');
+      
+      // Animate nav items
+      document.querySelectorAll('.nav-links li').forEach((link, i) => {
         link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${i/7+0.3}s`;
       });
-      burger.classList.toggle('toggle');
     });
-    burger.addEventListener('keydown', e => { 
-      if (e.key==='Enter'||e.key===' ') { 
-        e.preventDefault(); 
-        burger.click(); 
-      } 
+    
+    // Keyboard accessibility
+    burger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        burger.click();
+      }
     });
   }
 
-  // Close menu when clicking outside or on empty menu space
+  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     const navLinks = document.querySelector('.nav-links');
-    if (navLinks.classList.contains('active')) {
-      const clickedNavLink = e.target.closest('.nav-links a');
-      const clickedMenuContent = e.target.closest('.nav-links li');
-      
-      // Close if clicking:
-      // 1. Directly on nav-links element (empty space between items)
-      // 2. Outside menu completely
-      if ((e.target === navLinks || 
-          (!clickedNavLink && !clickedMenuContent)) &&
-          !e.target.closest('.burger')) {
-        navLinks.classList.remove('active');
+    if (navLinks.classList.contains('nav-active')) {
+      if (!e.target.closest('.nav-links') && !e.target.closest('.burger')) {
+        navLinks.classList.remove('nav-active');
         document.body.classList.remove('menu-open');
         burger.classList.remove('toggle');
-        items.forEach(l => l.style.animation = '');
+        document.querySelectorAll('.nav-links li').forEach(l => l.style.animation = '');
       }
     }
   });
