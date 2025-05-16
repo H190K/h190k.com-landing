@@ -57,6 +57,7 @@ window.onload = function () {
   if (burger) {
     burger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
       items.forEach((link, i) => {
         link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${i/7+0.3}s`;
       });
@@ -81,6 +82,7 @@ window.onload = function () {
           if(navLinks.classList.contains('active')){
             navLinks.classList.remove('active');
             burger.classList.remove('toggle');
+            document.body.classList.remove('menu-open');
             items.forEach(l=>l.style.animation='');
           }
         }
