@@ -5,6 +5,7 @@
   --btn-primary-bg:#8a2be2; --btn-primary-hover:#4b0082;
   --text-color:#fff; --text-muted:#ccc; --border-color:#333;
   --transition-speed:.25s; --animation-duration:.8s; --animation-easing:cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  --card-bg: #1a1a1a;
 }
 
 /* ───────────────  Base / Global  ─────────────── */

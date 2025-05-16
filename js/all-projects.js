@@ -1,8 +1,9 @@
-import projects from './projects.js';
-import { card } from './utils.js';
+import { initStorePopup } from './popup-utils.js';
+import { projects } from './projects.js';
 
 // Initialize all projects on page load with enhanced animations
 window.addEventListener('DOMContentLoaded', () => {
+  initStorePopup();
   const grid = document.getElementById('projects-grid');
   
   if (grid) {
@@ -11,7 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const animDuration = styles.getPropertyValue('--animation-duration').trim() || '0.8s';
     const animEasing = styles.getPropertyValue('--animation-easing').trim() || 'cubic-bezier(0.25, 0.1, 0.25, 1.0)';
     
-    // Add projects to the grid
     projects.forEach((p, index) => {
       grid.insertAdjacentHTML('beforeend', `
         <div class="project-card" style="animation-delay: ${index * 0.1}s">
@@ -33,15 +33,23 @@ window.addEventListener('DOMContentLoaded', () => {
     const animateOnScroll = () => {
       const cards = document.querySelectorAll('.project-card');
       
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0)';
+      });
+      
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            setTimeout(() => {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+      }, { threshold: 0.1 });
       
       cards.forEach(card => observer.observe(card));
     };

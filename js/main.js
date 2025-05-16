@@ -1,23 +1,31 @@
-import projects from './projects.js';
+import { getFeaturedProjects, projects } from './projects.js';
 import config from './config.js';
-import { card } from './utils.js';
+import { initStorePopup } from './popup-utils.js';
 
 window.config = config;
 
 // Initialize project cards for the homepage
 export function initProjects() {
-  const featuredTitles = [
-    'AttendList – Streamlined Classroom Attendance',
-    'QR Generator Browser Extension',
-    'Chat Starter',
-    'Alnssor Enterprise'
-  ];
-  
-  const featured = projects.filter(p => featuredTitles.includes(p.title));
+  const featured = getFeaturedProjects();
   const grid = document.getElementById('projects-grid');
   
   if (grid) {
-    featured.forEach(p => grid.insertAdjacentHTML('beforeend', card(p)));
+    featured.forEach(p => {
+      grid.insertAdjacentHTML('beforeend', `
+        <div class="project-card">
+          <div class="project-image">
+            <img src="${p.img}" alt="${p.title}" loading="lazy">
+          </div>
+          <div class="project-content">
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <button class="btn-secondary" onclick="window.open('${p.link}','_blank')">
+              ${p.button || 'View Project'}
+            </button>
+          </div>
+        </div>
+      `);
+    });
     
     if (projects.length > featured.length) {
       document.getElementById('view-all-wrapper').innerHTML =
@@ -37,6 +45,9 @@ window.onload = function () {
 
   // Initialize projects if we're on the homepage
   initProjects();
+  
+  // Initialize store popup
+  initStorePopup();
 
   // Burger toggle
   const burger = document.querySelector('.burger');
