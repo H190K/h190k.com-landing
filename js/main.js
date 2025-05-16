@@ -50,19 +50,18 @@ window.onload = function () {
   initStorePopup();
 
   // Initialize menu state
-  const navLinks = document.querySelector('.nav-links');
-  const closeBtn = document.querySelector('.mobile-close-btn');
-  if (navLinks) {
-    navLinks.classList.remove('active');
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) navLinks.classList.remove('active');
     document.body.classList.remove('menu-open');
-    if (closeBtn) closeBtn.style.display = 'none';
-  }
+  });
 
   // Burger toggle
   const burger = document.querySelector('.burger');
   const items = document.querySelectorAll('.nav-links li');
   
   // Create close button
+  const closeBtn = document.querySelector('.mobile-close-btn');
   if (!closeBtn) {
     const closeBtn = document.createElement('button');
     closeBtn.className = 'mobile-close-btn';
