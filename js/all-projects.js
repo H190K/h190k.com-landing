@@ -58,3 +58,43 @@ window.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
   }
 });
+
+// Burger Menu Functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (burger && navLinks) {
+    // Click handler
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-active');
+      document.body.classList.toggle('menu-open');
+      burger.classList.toggle('toggle');
+      
+      // Animate nav items
+      document.querySelectorAll('.nav-links li').forEach((link, i) => {
+        link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${i/7+0.3}s`;
+      });
+    });
+    
+    // Keyboard accessibility
+    burger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        burger.click();
+      }
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('nav-active')) {
+        if (!e.target.closest('.nav-links') && !e.target.closest('.burger')) {
+          navLinks.classList.remove('nav-active');
+          document.body.classList.remove('menu-open');
+          burger.classList.remove('toggle');
+          document.querySelectorAll('.nav-links li').forEach(l => l.style.animation = '');
+        }
+      }
+    });
+  }
+});
