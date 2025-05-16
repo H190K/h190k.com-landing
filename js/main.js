@@ -19,9 +19,9 @@ export function initProjects() {
           <div class="project-content">
             <h3>${p.title}</h3>
             <p>${p.desc}</p>
-            <button class="btn-secondary" onclick="window.open('${p.link}','_blank')">
+            <a href="${p.link}" target="_blank" class="btn-secondary">
               ${p.button || 'View Project'}
-            </button>
+            </a>
           </div>
         </div>
       `);
