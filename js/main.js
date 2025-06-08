@@ -183,3 +183,159 @@ window.onload = function () {
     });
   }
 };
+
+// Animated Code Background Effect
+class CodeBackground {
+    constructor() {
+        this.codeSnippets = [
+            'const app = express();',
+            'function calculate(x, y) { return x + y; }',
+            'import React from "react";',
+            '<div className="container">',
+            'async function fetchData() {',
+            'if (isValid) { process(); }',
+            'const [state, setState] = useState();',
+            'app.listen(3000);',
+            'export default Component;',
+            'npm install --save',
+            'git commit -m "Update"',
+            'docker run -p 8080:80',
+            'SELECT * FROM users WHERE id = ?',
+            'console.log("Hello World");',
+            'let result = await fetch(url);',
+            'class MyComponent extends React.Component {',
+            'const router = new Router();',
+            'db.collection("users").find({})',
+            'transform: translateY(-50%);',
+            'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);',
+            'box-shadow: 0 10px 20px rgba(0,0,0,0.2);',
+            '@media (max-width: 768px) {',
+            'useState(() => { loadData(); }, []);',
+            'const handleSubmit = (e) => {',
+            'return response.json();',
+            'interface User { name: string; }',
+            'type Props = { children: ReactNode };',
+            '#include <iostream>',
+            'def main():',
+            'public static void main(String[] args) {',
+            '<?php echo "Hello"; ?>',
+            'body { margin: 0; padding: 0; }',
+            '.container { max-width: 1200px; }',
+            'flex-direction: column;',
+            'justify-content: center;',
+            'align-items: center;',
+            'position: absolute;',
+            'z-index: 999;',
+            'transition: all 0.3s ease;',
+            'npm run build',
+            'yarn add react-router-dom',
+            'kubectl apply -f deployment.yaml',
+            'FROM node:14-alpine',
+            'WORKDIR /app',
+            'COPY package*.json ./',
+            'RUN npm ci --only=production',
+            'EXPOSE 3000',
+            'CMD ["node", "server.js"]'
+        ];
+        
+        this.loaded = false;
+        this.init();
+    }
+
+    init() {
+        this.createBackground();
+        this.generateCodeLines();
+        
+        document.addEventListener('visibilitychange', this.handleVisibilityChange.bind(this));
+        
+        setInterval(() => {
+            this.generateCodeLines();
+        }, 10000);
+    }
+
+    createBackground() {
+        const background = document.createElement('div');
+        background.className = 'code-background';
+        
+        const hero = document.getElementById('hero');
+        if (hero) {
+            hero.appendChild(background);
+            this.background = background;
+        } else {
+            console.error('Hero element not found');
+        }
+    }
+
+    generateCodeLines() {
+        // Reduce the number of lines (one line every 100px instead of 50px)
+        const lineCount = Math.floor(window.innerHeight / 100);
+        
+        for (let i = 0; i < lineCount; i++) {
+            setTimeout(() => {
+                this.createCodeLine(i);
+            }, i * 400); // More delay between line creation
+        }
+    }
+
+    createCodeLine(index) {
+        const line = document.createElement('div');
+        line.className = 'code-line';
+        
+        // Randomize animation direction
+        if (Math.random() < 0.5) {
+            line.style.animationName = 'float-code-alt';
+        }
+        
+        // Randomly assign color class
+        if (Math.random() < 0.5) {
+            line.classList.add('purple-glow');
+        } else {
+            line.classList.add('orange-glow');
+        }
+        
+        if (!this.loaded) {
+            document.body.classList.remove('loading');
+            this.loaded = true;
+        }
+        
+        const snippet = this.codeSnippets[Math.floor(Math.random() * this.codeSnippets.length)];
+        line.textContent = snippet;
+        
+        line.style.top = `${Math.random() * 100}%`;
+        
+        // Slower animation duration (30-50 seconds)
+        const duration = 30 + Math.random() * 20;
+        line.style.animationDuration = `${duration}s`;
+        
+        // Longer delay between lines
+        line.style.animationDelay = `${Math.random() * 8}s`;
+        
+        // Lower opacity range
+        line.style.opacity = 0.1 + Math.random() * 0.15;
+        
+        this.background.appendChild(line);
+        
+        setTimeout(() => {
+            line.remove();
+        }, (duration + 8) * 1000);
+    }
+
+    handleVisibilityChange() {
+        if (document.hidden) {
+            this.background.style.animationPlayState = 'paused';
+        } else {
+            this.background.style.animationPlayState = 'running';
+        }
+    }
+}
+
+// Initialize the code background effect
+function initCodeBackground() {
+    new CodeBackground();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCodeBackground);
+} else {
+    initCodeBackground();
+}

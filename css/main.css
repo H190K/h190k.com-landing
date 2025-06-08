@@ -46,27 +46,122 @@ header.scrolled{
 .burger div{width:25px;height:3px;background:var(--text-color);margin:5px;transition:all var(--transition-speed)}
 
 /* ───────────────  Hero  ─────────────── */
-.hero{
-  height:100vh;background:url('../img/hero.png') no-repeat center/cover;
-  display:flex;align-items:center;justify-content:center;text-align:center;position:relative
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
 }
-.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.7);z-index:1}
-.hero-content{position:relative;z-index:2;padding:0 20px}
-.hero h1{
-  font-size:3rem;margin-bottom:20px;opacity:0;
-  animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards .5s
+
+/* Remove any existing background image */
+.hero {
+    background-image: none !important;
 }
-.hero p{
-  font-size:1.2rem;margin-bottom:30px;color:#ddd;opacity:0;
-  animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards 1s
+
+/* Code background container */
+.code-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
-.btn-primary{
-  padding:12px 35px;background:var(--btn-primary-bg);color:var(--text-color);
-  border:none;border-radius:30px;cursor:pointer;font-size:1rem;
-  transition:background var(--transition-speed),transform var(--transition-speed);
-  opacity:0;animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards 1.5s
+
+/* Code line styles - make more subtle */
+.code-line {
+    position: absolute;
+    white-space: nowrap;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    opacity: 0.15; /* Reduced opacity */
+    pointer-events: none;
 }
-.btn-primary:hover{background:var(--btn-primary-hover);transform:scale(1.05)}
+
+/* Purple glow effect - more subtle */
+.purple-glow {
+    color: #d8b4ff;
+    text-shadow: 
+        0 0 3px #d8b4ff,
+        0 0 5px #d8b4ff;
+}
+
+/* Orange glow effect - more subtle */
+.orange-glow {
+    color: #ffb347;
+    text-shadow: 
+        0 0 3px #ffb347,
+        0 0 5px #ffb347;
+}
+
+/* Animation for left to right */
+@keyframes float-code {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+}
+
+/* Animation for right to left */
+@keyframes float-code-alt {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Enhanced hero content visibility */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInUp var(--animation-duration) var(--animation-easing) forwards .5s;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeInUp var(--animation-duration) var(--animation-easing) forwards 1s;
+}
+
+/* Revert button styles to original */
+.btn-primary {
+    padding: 12px 35px;
+    background: var(--btn-primary-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+    opacity: 0;
+    animation: fadeInUp var(--animation-duration) var(--animation-easing) forwards 1.5s;
+}
+
+.btn-primary:hover {
+    background: var(--btn-primary-hover);
+    transform: scale(1.05);
+}
 
 /* Scroll-down arrow styles */
 .scroll-down {
