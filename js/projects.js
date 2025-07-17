@@ -45,7 +45,7 @@ const projects = [
 {
   title: 'Business Card Generator – Interactive Design Tool',
   img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
-  desc: 'Create stylish, responsive business cards with real-time customization. Unique UI with multiple layout styles. Deployed on Netlify.',
+  desc: 'Design your own stylish and professional business card with interactive layouts and real-time customization.',
   link: 'https://businesscardgenerator.h190k.com'
 },
   {
