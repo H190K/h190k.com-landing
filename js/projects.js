@@ -42,6 +42,12 @@ const projects = [
     desc: 'Detailed breakdown of your IP, ISP, and security insights. Different UI and deployed on Netlify.',
     link: 'https://ipcheck.h190k.com'
   },
+{
+  title: 'Business Card Generator – Interactive Design Tool',
+  img: 'https://github.com/H190K/h190k.com-repo/blob/main/business-cards.png?raw=true',
+  desc: 'Create stylish, responsive business cards with real-time customization. Unique UI with multiple layout styles. Deployed on Netlify.',
+  link: 'https://businesscardgenerator.h190k.com'
+},
   {
     title: 'AttendList',
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/attendlist.png?raw=true',
