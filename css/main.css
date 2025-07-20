@@ -306,7 +306,19 @@ main section:nth-of-type(even){background:var(--secondary-bg)}
 /* ───────────────  Contact  ─────────────── */
 #contact h2{font-size:2.5rem;text-align:center;margin-bottom:50px;
   opacity:0;animation:fadeInUp var(--animation-duration) var(--animation-easing) forwards .5s}
-.contact-form{max-width:600px;margin:auto;padding:0 20px}
+
+.contact-wrapper {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.contact-form{
+  flex: 2;
+  max-width: 600px;
+  margin: 0;
+  padding: 0 20px;
+}
 .contact-form form{display:flex;flex-direction:column;gap:20px}
 .contact-form input,.contact-form textarea{
   padding:15px;border:2px solid var(--border-color);border-radius:5px;
@@ -326,6 +338,52 @@ main section:nth-of-type(even){background:var(--secondary-bg)}
   background:var(--btn-primary-hover);transform:scale(1.02)
 }
 #turnstile-container{margin:10px 0}
+
+.contact-info {
+  flex: 1;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  transition: transform var(--transition-speed), border-color var(--transition-speed);
+  text-align: center;
+}
+
+.contact-info:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--btn-primary-bg);
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info ul li {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.contact-info ul li a {
+  color: var(--text-color);
+  transition: color var(--transition-speed);
+  display: inline-flex;
+  align-items: center;
+}
+
+.contact-info ul li a:hover {
+  color: var(--hover-accent);
+}
+
+.contact-info ul li a i {
+    margin-right: 10px;
+}
 
 /* ───────────────  Footer  ─────────────── */
 footer{
@@ -411,6 +469,22 @@ footer{
 }
 
 /* ───────────────  Responsive  ─────────────── */
+@media (max-width:992px){
+  .contact-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-form {
+    margin: 0 auto 40px auto;
+    width: 100%;
+    max-width: 600px;
+  }
+  .contact-info {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
 @media (max-width:768px){
   .hero h1{font-size:2.5rem}
   .hero p{font-size:1rem}
