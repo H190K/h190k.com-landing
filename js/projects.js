@@ -53,6 +53,12 @@ const projects = [
     img: 'https://github.com/H190K/h190k.com-repo/blob/main/attendlist.png?raw=true',
     desc: 'Automate attendance with instant QR codes; timestamped check-ins and CSV export.',
     link: 'https://attendlist.h190k.com'
+  },
+  {
+    title: 'HTML Runner',
+    img: 'https://github.com/H190K/h190k.com-repo/blob/main/html.png?raw=true',
+    desc: 'A tool for quickly testing and running HTML code snippets in real-time.',
+    link: 'https://htmlrunner.h190k.com'
   }
 ];
 
